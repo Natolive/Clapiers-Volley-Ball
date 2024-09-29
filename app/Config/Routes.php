@@ -25,4 +25,5 @@ $routes->group('/backend', ['namespace' => '\App\Controllers\Backend'], static f
     
     //backend
     $routes->get('dashboard', 'Dashboard');
+    $routes->get('activity', 'Activity');
 });

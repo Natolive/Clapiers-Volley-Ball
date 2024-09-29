@@ -8,6 +8,8 @@ class Dashboard extends BaseController
 {
     public function index(): string
     {
-        return view('backend/dashboard');
+        helper("html");
+
+        return backend_build(view('backend/dashboard'), "Dashboard");
     }
 }
