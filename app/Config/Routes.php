@@ -24,5 +24,5 @@ $routes->group('/backend', ['namespace' => '\App\Controllers\Backend'], static f
     service('auth')->routes($routes);
     
     //backend
-    $routes->get('', 'Home');
+    $routes->get('dashboard', 'Dashboard');
 });

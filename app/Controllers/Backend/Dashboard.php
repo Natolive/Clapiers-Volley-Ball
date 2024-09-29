@@ -4,10 +4,10 @@ namespace App\Controllers\Backend;
 
 use App\Controllers\BaseController;
 
-class Home extends BaseController
+class Dashboard extends BaseController
 {
     public function index(): string
     {
-        return view('backend/home');
+        return view('backend/dashboard');
     }
 }
