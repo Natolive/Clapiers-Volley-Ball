@@ -9,7 +9,10 @@
     <!-- Materialize -->
     <link rel="stylesheet" href="<?= base_url("libs/materialize/materialize.min.css") ?>">
     <script src="<?= base_url("libs/materialize/materialize.min.js") ?>"></script>
-    
+    <!-- JQuery -->
+     <script src=<?= base_url("libs/jquery/jquery.min.js") ?>></script>
+     <!-- Icons -->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
