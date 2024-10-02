@@ -15,6 +15,19 @@ if (!function_exists('backend_build')) {
     }
 }
 
+if (!function_exists('public_build')) {
+    /**
+     * Build public html with gabarit and navbar
+     * @param string $body
+     * @return string
+     */
+    function public_build(string $body): string {
+        $navbar = view("public/navbar");
+        $gabarit = view("public/gabarit", ["navbar" => $navbar, "body" => $body]);
+        return $gabarit;
+    }
+}
+
 if (!function_exists('datatables')) {
     /**
      * Build datatables

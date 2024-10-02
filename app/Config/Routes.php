@@ -13,7 +13,9 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->group('/', ['namespace' => '\App\Controllers\Public'], static function ($routes) {
     $routes->get('', 'Home');
-    $routes->get('public', 'Home');
+    $routes->get('teams', 'Teams');
+    $routes->get('events', 'Events');
+    $routes->get('rankings', 'Rankings');
 });
 
 /**
@@ -26,4 +28,5 @@ $routes->group('/backend', ['namespace' => '\App\Controllers\Backend'], static f
     //backend
     $routes->get('dashboard', 'Dashboard');
     $routes->get('activity', 'Activity');
+    $routes->get('team', 'Team');
 });

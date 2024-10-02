@@ -9,8 +9,6 @@ class Activity extends BaseController
 {
     public function index(): string
     {
-        helper("html");
-
         $logins = $this->get_activity();
 
         $headers = ["Date", "Identifiant", "Adresse ip", "Navigateur", "Réussite"];
@@ -21,7 +19,7 @@ class Activity extends BaseController
     }
 
     private function get_activity(): array {
-        $logins = (new LoginModel())->orderBy("date")->findAll(10);
+        $logins = (new LoginModel())->orderBy("date")->findAll();
         return $logins;
     }
 }

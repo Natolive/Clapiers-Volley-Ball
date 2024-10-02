@@ -7,4 +7,5 @@
 <ul id="slide-out" class="sidenav sidenav-fixed">
     <li><a href="<?= base_url("backend/dashboard") ?>">Dashboard</a></li>
     <li><a href="<?= base_url("backend/activity") ?>">Actvités</a></li>
+    <li><a href="<?= base_url("backend/team") ?>">Équipes</a></li>
 </ul>

@@ -4,10 +4,10 @@ namespace App\Controllers\Public;
 
 use App\Controllers\BaseController;
 
-class Home extends BaseController
+class Events extends BaseController
 {
     public function index(): string
     {
-        return public_build(view("public/home"));
+        return public_build(view("public/events"));
     }
 }
