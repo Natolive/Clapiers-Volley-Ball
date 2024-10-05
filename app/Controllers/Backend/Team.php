@@ -37,7 +37,7 @@ class Team extends BaseController
     protected function getTeam(int $idTeam): ?Teams {
         $team = (new TeamsModel())->find($idTeam);
         if (!$team) {
-            throw new Exception("Error get team", 400);
+            throw new Exception("Error get team", 404);
         }
         return $team;
     }
