@@ -16,6 +16,8 @@
   <!-- Datatables -->
   <script src="<?= base_url("libs/datatables/datatables.min.js") ?>"></script>
   <link rel="stylesheet" href="<?= base_url("libs/datatables/datatables.min.css") ?>">
+  <!-- Sweet Alert 2 -->
+   <script src="<?= base_url("libs/sweetalert/sweetalert.min.js") ?>"></script>
 
 </head>
 
