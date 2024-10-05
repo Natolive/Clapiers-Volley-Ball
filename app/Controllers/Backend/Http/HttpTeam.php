@@ -9,11 +9,12 @@ use Exception;
 
 class HttpTeam extends Team implements HttpInterface
 {
+
     public function getAll(): ResponseInterface {
         try {
             $teams = $this->getAllTeams();
-
-            return success_http($this->response, "teams get all", $teams);
+            
+            return success_http($this->response, "teams get all", $teams); 
         } catch (Exception $exception) {
             return error_http($this->response, $exception);
         }

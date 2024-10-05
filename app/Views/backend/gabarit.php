@@ -2,44 +2,60 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administration | Clapiers Volley Ball</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administration | Clapiers Volley Ball</title>
 
-    <!-- Materialize -->
-    <link rel="stylesheet" href="<?= base_url("libs/materialize/materialize.min.css") ?>">
-    <script src="<?= base_url("libs/materialize/materialize.min.js") ?>"></script>
-    <!-- JQuery -->
-     <script src=<?= base_url("libs/jquery/jquery.min.js") ?>></script>
-     <!-- Icons -->
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Materialize -->
+  <link rel="stylesheet" href="<?= base_url("libs/materialize/materialize.min.css") ?>">
+  <script src="<?= base_url("libs/materialize/materialize.min.js") ?>"></script>
+  <!-- JQuery -->
+  <script src=<?= base_url("libs/jquery/jquery.min.js") ?>></script>
+  <!-- Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Datatables -->
+  <script src="<?= base_url("libs/datatables/datatables.min.js") ?>"></script>
+  <link rel="stylesheet" href="<?= base_url("libs/datatables/datatables.min.css") ?>">
+
 </head>
 
 <body>
-    <header>
-        <?= $navbar ?>
-    </header>
-    <main>
-        <?= $body ?>
-    </main>
-    <footer>
+  <header>
+    <?= $navbar ?>
+  </header>
+  <main>
+    <?= $body ?>
+  </main>
+  <footer>
 
-    </footer>
+  </footer>
 </body>
+
 </html>
 
 <style>
-    header, main, footer {
-      padding-left: 300px;
+  header,
+  main,
+  footer {
+    padding-left: 300px;
+  }
+
+  @media only screen and (max-width : 992px) {
+
+    header,
+    main,
+    footer {
+      padding-left: 0;
     }
 
-    @media only screen and (max-width : 992px) {
-      header, main, footer {
-        padding-left: 0;
-      }
-
-      nav .nav-wrapper .brand-logo {
-        margin-left:0px !important;
-      }
+    nav .nav-wrapper .brand-logo {
+      margin-left: 0px !important;
     }
+  }
 </style>
+
+<script>
+  const GlobalVariables = {
+    baseUrl: <?= json_encode(base_url()) ?>
+  }
+</script>

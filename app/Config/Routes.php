@@ -29,4 +29,8 @@ $routes->group('/backend', ['namespace' => '\App\Controllers\Backend'], static f
     $routes->get('dashboard', 'Dashboard');
     $routes->get('activity', 'Activity');
     $routes->get('team', 'Team');
+
+    $routes->group('http', ['namespace' => '\App\Controllers\Backend\Http'], static function ($routes) {
+        $routes->get('team/getAll', 'HttpTeam::getAll');
+    });
 });

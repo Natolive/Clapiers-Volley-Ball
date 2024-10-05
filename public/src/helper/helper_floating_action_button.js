@@ -1,12 +1,18 @@
 class HelperFloatingActionButton {
 
+    /**
+     * Constructor of class HelperFloatingActionButton
+     * 
+     * @param {string} icon 
+     * @param {string} color 
+     */
     constructor(icon, color) {
         if (!window.jQuery) {
-            console.error("JQuery not loaded")
+            throw new Error("JQuery not loaded")
         }
 
         if (!window.M) {
-            console.error("Materialze not loaded")
+            throw new Error("Materialze not loaded")
         }
         
         this.$button = $("<div>").addClass("fixed-action-btn")
@@ -17,6 +23,13 @@ class HelperFloatingActionButton {
         this.$button.append($a.append($i))
     }
 
+    /**
+     * Add floating button
+     * 
+     * @param {string} icon 
+     * @param {string} color 
+     * @param {Function} callback 
+     */
     add_button(icon, color, callback) {
         const $button = $("<li>")
         const $a = $("<a>").addClass("btn-floating").addClass(color)
@@ -26,6 +39,9 @@ class HelperFloatingActionButton {
         this.$button.find("ul").append($button)
     }
 
+    /**
+     * Build the button
+     */
     build() {
         $("body").append(this.$button)
         M.FloatingActionButton.init(this.$button[0], []);

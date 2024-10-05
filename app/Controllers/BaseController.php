@@ -37,7 +37,8 @@ abstract class BaseController extends Controller
      */
     protected $helpers = [
         'html',
-        'http'
+        'http',
+        'security'
     ];
 
     /**

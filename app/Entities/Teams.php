@@ -11,11 +11,11 @@ class Teams extends Entity
     protected $casts   = [
         'id' => 'int',
         'name' => 'string',
-        'description' => 'string',
+        'description' => '?string',
         'division' => 'string',
-        'image_uuid' => 'string',
-        'image_extension' => 'string',
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
+        'image_uuid' => '?string',
+        'image_extension' => '?string',
+        'created_at' => '?datetime',
+        'updated_at' => '?datetime',
     ];
 }
