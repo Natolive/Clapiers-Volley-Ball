@@ -2,12 +2,12 @@
 
 namespace App\Controllers\Backend\Http;
 
-use App\Controllers\Backend\Team;
+use App\Controllers\Backend\ControllerBackendTeam;
 use App\Controllers\Backend\Http\HttpInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Exception;
 
-class HttpTeam extends Team implements HttpInterface
+class HttpTeam extends ControllerBackendTeam implements HttpInterface
 {
 
     public function getAll(): ResponseInterface {

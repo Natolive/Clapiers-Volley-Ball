@@ -8,7 +8,7 @@ use App\Models\TeamsModel;
 use CodeIgniter\HTTP\Files\UploadedFile;
 use \Exception;
 
-class Team extends BaseController
+class ControllerBackendTeam extends BaseController
 {
     /**
      * Get view of page backend team

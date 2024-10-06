@@ -19,6 +19,8 @@ class HelperAjax {
 
     async request() {
         try {
+            HelperLoader.add_loader()
+
             const settings = {
                 method: this.method,
             }
@@ -28,6 +30,8 @@ class HelperAjax {
 
             const response = await fetch(this.url, settings)
         
+            HelperLoader.remove_loader()
+
             if (!response.ok) {
                 const error = await response.json()
                 throw new Error(error.message)
@@ -35,7 +39,7 @@ class HelperAjax {
         
             return await response.json()
         } catch (error) {
-            console.log(error.message)
+            console.error(error)
             return false
         }
     }

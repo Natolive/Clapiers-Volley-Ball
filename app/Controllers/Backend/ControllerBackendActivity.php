@@ -5,7 +5,7 @@ namespace App\Controllers\Backend;
 use CodeIgniter\Shield\Models\LoginModel;
 use App\Controllers\BaseController;
 
-class Activity extends BaseController
+class ControllerBackendActivity extends BaseController
 {
     public function index(): string
     {
