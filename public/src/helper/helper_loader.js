@@ -11,7 +11,7 @@ class HelperLoader {
             "align-items": "center",
             "justify-content": "center",
         }).attr("id", "loader")
-        const $image = $("<img>").attr("src", `${GlobalVariables.baseUrl}src/images/infinite-spinner.svg`).css("height", "20%")
+        const $image = $("<img>").attr("src", `${GlobalVariables.baseUrl}src/images/59f89ca5-45eb-4f0c-b952-6b3edc05f17e.svg`).css("height", "20%")
         $loader.append($image)
         $loader.prependTo($("body"))
     }

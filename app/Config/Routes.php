@@ -31,6 +31,8 @@ $routes->group('/backend', ['namespace' => '\App\Controllers\Backend'], static f
     $routes->get('team', 'ControllerBackendTeam');
 
     $routes->group('http', ['namespace' => '\App\Controllers\Backend\Http'], static function ($routes) {
+        $routes->get('serve/get/(:any)', 'HttpServe::get/$1');
+        
         $routes->get('team/getAll', 'HttpTeam::getAll');
         $routes->post('team/add', 'HttpTeam::add');
     });

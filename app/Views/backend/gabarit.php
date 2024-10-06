@@ -21,7 +21,8 @@
   <!-- Uppy -->
   <script src="<?= base_url("libs/uppy/uppy.min.js") ?>"></script>
   <link rel="stylesheet" href="<?= base_url("libs/uppy/uppy.min.css") ?>">
-
+  <!-- Validator -->
+  <script src="<?= base_url("libs/validator/validator.min.js") ?>"></script>
 </head>
 
 <body>

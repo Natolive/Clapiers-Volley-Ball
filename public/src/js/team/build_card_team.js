@@ -8,6 +8,13 @@ const build_card_team = async () => {
             $cardTeam.find(".card-title").text(team.name)
             $cardTeam.find(".card-title").append($("<br>"))
             $cardTeam.find(".card-title").append($subTitle)
+
+            $cardTeam.find(".card-image img").attr("src", 
+                team.image_uuid ? 
+                `${GlobalVariables.baseUrl}backend/http/serve/get/${team.image_uuid}.${team.image_extension}`
+                : `${GlobalVariables.baseUrl}src/images/f1c2343b-5928-422b-bea8-50c5582be632.avif`
+            )
+            
             $cardTeam.find(".card-content p").text(team.description ?? "Aucune description")
             $("#teams").append($cardTeam)
         });

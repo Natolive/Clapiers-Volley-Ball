@@ -11,15 +11,44 @@ const add_team = () => {
         M.CharacterCounter.init($modal.find("textarea#input-description")[0])
     }
     const preConfirmStep1 = () => {
+        const valid = []
+
         const $modal = $(Swal.getHtmlContainer())
 
-        const name = $modal.find("input#input-name").val()
-        const division = $modal.find("input#input-division").val()
-        const description = $modal.find("textarea#input-description").val()
+        const $name = $modal.find("input#input-name")
+        const $division = $modal.find("input#input-division")
+        const $description = $modal.find("textarea#input-description")
 
-        formData.append("name", name)
-        formData.append("division", division)
-        formData.append("description", description)
+        if (!validator.isLength($name.val(), { min: 1, max: 100 })) {
+            valid.push(false)
+            $name.removeClass("valid").addClass('invalid')
+        } else {
+            $name.removeClass("invalid").addClass('valid')
+        }
+        
+        if (!validator.isLength($division.val(), { min: 1, max: 100 })) {
+            valid.push(false)
+            $division.removeClass("valid").addClass('invalid')
+        } else {
+            $division.removeClass("invalid").addClass('valid')
+        }
+        
+        if ($description.val().length > 0) {
+            if (!validator.isLength($description.val(), { min: 1, max: 200 })) {
+                valid.push(false)
+                $description.removeClass("valid").addClass('invalid')
+            } else {
+                $description.removeClass("invalid").addClass('valid')
+                formData.append("description", $description.val())
+            }
+        }
+
+        if (valid.includes(false)) {
+            return false
+        }
+        
+        formData.append("name", $name.val())
+        formData.append("division", $division.val())
     }
 
     const didOpenStep2 = () => {

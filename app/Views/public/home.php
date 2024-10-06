@@ -3,7 +3,7 @@
 <h4>Qui sommes nous ?</h4>
 
 <img class="materialboxed" width="100%" alt="Photo des membres de Clapiers Volley Ball"
-    src="<?= base_url("src/images/home_background.jpeg") ?>">
+    src="<?= base_url("src/images/f4e5f6e2-9a66-49d0-96f2-3d6a83c5ae48.jpeg") ?>">
 
 <div class="card">
     <div class="card-content black-text">

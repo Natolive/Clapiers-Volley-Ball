@@ -12,8 +12,8 @@
 
 <div id="template-card-team" class="col s12 m6 l4" style="display: none;">
     <div class="card">
-        <div class="card-image">
-            <img src="<?= base_url("src/images/pexels-lucasandrade-21675898.jpg") ?>">
+        <div style="height: 200px; display: flex; align-items: center;" class="card-image">
+            <img style="max-height: 100%;">
             <span class="card-title"></span>
             <a class="btn-floating halfway-fab waves-effect waves-light blue"><i class="material-icons">edit</i></a>
         </div>
@@ -28,12 +28,12 @@
         <form class="col s12">
             <div class="row">
                 <div class="input-field col s12 m6">
-                    <input id="input-name" type="text" data-length="100" maxlength="100" class="validate">
+                    <input id="input-name" type="text" data-length="100" minlength="1" maxlength="100" class="validate">
                     <label for="input-name">Nom</label>
                     <span style="text-align:left" class="helper-text">Obligatoire</span>
                 </div>
                 <div class="input-field col s12 m6">
-                    <input id="input-division" type="text" data-length="100" maxlength="100" class="validate">
+                    <input id="input-division" type="text" data-length="100" minlength="1" maxlength="100" class="validate">
                     <label for="input-division">Division</label>
                     <span style="text-align:left" class="helper-text">Obligatoire</span>
                 </div>

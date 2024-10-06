@@ -3,7 +3,7 @@
     <div class="row">
       <div class="container s12 m12 l10">
         <a style="height: 100%; display: flex; align-items: center;" href="<?= base_url() ?>" class="brand-logo">
-          <img style="height:80%;" src="<?= base_url("src/images/184940.svg") ?>" alt="">
+          <img style="height:80%;" src="<?= base_url("src/images/a1239a6c-2060-4498-bd16-f1c3b6d47004.svg") ?>" alt="">
         </a>
         <a data-target="mobile-navbar" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
