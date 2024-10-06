@@ -64,4 +64,20 @@ class ControllerBackendTeam extends BaseController
         }
         return $teams;
     }
+
+    protected function deleteTeam(int $idTeam): int 
+    {
+        $team = $this->getTeam($idTeam);
+        if ($team->image_uuid) {
+            $path = WRITEPATH . "uploads/" . $team->image_uuid . "." . $team->image_extension;
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
+
+        if (!(new TeamsModel())->delete($idTeam)) {
+            throw new Exception("Error deleting team", 400);
+        }
+        return $idTeam;
+    }
 }

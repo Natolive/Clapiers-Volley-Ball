@@ -63,9 +63,9 @@ class HttpTeam extends ControllerBackendTeam implements HttpInterface
 
     public function delete(int $id): ResponseInterface {
         try {
-            $team = [];
+            $idTeam = $this->deleteTeam($id);
 
-            return $this->response->setJSON(["success" => "team delete", "data" => $team]);
+            return $this->response->setJSON(["success" => "team delete", "data" => $idTeam]);
         } catch (Exception $e) {
             return $this->response->setStatusCode(400)->setJSON(["error" => $e->getMessage()]);
         }

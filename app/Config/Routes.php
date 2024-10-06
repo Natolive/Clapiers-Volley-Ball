@@ -6,12 +6,10 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
-
-
 /**
  * Route group for public views
  */
-$routes->group('/', ['namespace' => '\App\Controllers\Public'], static function ($routes) {
+$routes->group('/', ['namespace' => '\App\Controllers\Public'], static function (RouteCollection $routes) {
     $routes->get('', 'Home');
     $routes->get('teams', 'Teams');
     $routes->get('events', 'Events');
@@ -21,7 +19,7 @@ $routes->group('/', ['namespace' => '\App\Controllers\Public'], static function 
 /**
  * Route group for backend views
  */
-$routes->group('/backend', ['namespace' => '\App\Controllers\Backend'], static function ($routes) {
+$routes->group('/backend', ['namespace' => '\App\Controllers\Backend'], static function (RouteCollection $routes) {
     //auth
     service('auth')->routes($routes);
     
@@ -35,5 +33,7 @@ $routes->group('/backend', ['namespace' => '\App\Controllers\Backend'], static f
         
         $routes->get('team/getAll', 'HttpTeam::getAll');
         $routes->post('team/add', 'HttpTeam::add');
+        $routes->delete('team/delete/(:num)', 'HttpTeam::delete/$1');
+
     });
 });

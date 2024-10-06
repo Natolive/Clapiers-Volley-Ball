@@ -66,7 +66,7 @@ const add_team = () => {
             singleFileFullScreen: true,
             note: "Importez une image d'équipe",
             target: $modal.find("#input-image")[0],
-            height: "70vh",
+            height: "60vh",
             autoOpenFileEditor: true,
             hideUploadButton: true,
         }).use(Uppy.ImageEditor, {
@@ -112,6 +112,7 @@ const add_team = () => {
     let toKeepOpen = true
     const steps = ['1', '2']
     const Queue = Swal.mixin({
+        title: "Ajouter une équipe",
         progressSteps: steps,
         showCloseButton: true,
         allowOutsideClick: false,
