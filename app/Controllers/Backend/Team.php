@@ -5,6 +5,7 @@ namespace App\Controllers\Backend;
 use App\Controllers\BaseController;
 use App\Entities\Teams;
 use App\Models\TeamsModel;
+use CodeIgniter\HTTP\Files\UploadedFile;
 use \Exception;
 
 class Team extends BaseController
@@ -32,13 +33,35 @@ class Team extends BaseController
      * Get team
      * @param int $idTeam
      * @throws Exception
-     * @return array|Teams
+     * @return Teams
      */
-    protected function getTeam(int $idTeam): ?Teams {
+    protected function getTeam(int $idTeam): Teams {
         $team = (new TeamsModel())->find($idTeam);
         if (!$team) {
             throw new Exception("Error get team", 404);
         }
         return $team;
+    }
+
+    protected function addTeam(string $name, string $division, ?string $description, ?UploadedFile $image): Teams {
+        $teams = new Teams();
+        $teams->name = $name;
+        $teams->division = $division;
+        $teams->description = $description;
+        
+        if ($image) {
+            if ($image->isValid() && !$image->hasMoved()) {
+                $guidv4 = guidv4();
+                $extension = $image->getExtension();
+                $image->move(WRITEPATH . 'uploads', $guidv4 . "." . $extension);
+                $teams->image_uuid = $guidv4;
+                $teams->image_extension = $extension;
+            }
+        }
+
+        if (!(new TeamsModel)->save($teams)) {
+            throw new Exception("Error inserting team", 400);
+        }
+        return $teams;
     }
 }

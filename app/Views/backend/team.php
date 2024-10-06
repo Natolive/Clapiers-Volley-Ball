@@ -7,9 +7,7 @@
 <script src="<?= base_url("src/js/team/build_floating_action_button.js") ?>"></script>
 <script src="<?= base_url("src/js/team/index.js") ?>"></script>
 
-<div id="teams" class="row">
-
-</div>
+<div id="teams" class="row"></div>
 
 <div id="template-card-team" class="col s12 m6 l4" style="display: none;">
     <div class="card">
@@ -25,7 +23,7 @@
 </div>
 
 <div id="template-add-team" style="display:none">
-    <div id="step-1" class="row" style="display:none">
+    <div id="step-1" style="display:none">
         <form class="col s12">
             <div class="row">
                 <div class="input-field col s12 m6">
@@ -46,7 +44,7 @@
             </div>
         </form>
     </div>
-    <div id="step-2" style="display:none">
+    <div id="step-2" style="display:none;">
         <div id="input-image"></div>
     </div>
 </div>

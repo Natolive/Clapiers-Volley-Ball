@@ -19,9 +19,14 @@ class HelperAjax {
 
     async request() {
         try {
-            const response = await fetch(this.url, {
+            const settings = {
                 method: this.method,
-            })
+            }
+            if (this.method === "POST") {
+                settings.body = this.formData
+            }
+
+            const response = await fetch(this.url, settings)
         
             if (!response.ok) {
                 const error = await response.json()

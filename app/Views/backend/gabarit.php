@@ -17,7 +17,10 @@
   <script src="<?= base_url("libs/datatables/datatables.min.js") ?>"></script>
   <link rel="stylesheet" href="<?= base_url("libs/datatables/datatables.min.css") ?>">
   <!-- Sweet Alert 2 -->
-   <script src="<?= base_url("libs/sweetalert/sweetalert.min.js") ?>"></script>
+  <script src="<?= base_url("libs/sweetalert/sweetalert.min.js") ?>"></script>
+  <!-- Uppy -->
+  <script src="<?= base_url("libs/uppy/uppy.min.js") ?>"></script>
+  <link rel="stylesheet" href="<?= base_url("libs/uppy/uppy.min.css") ?>">
 
 </head>
 

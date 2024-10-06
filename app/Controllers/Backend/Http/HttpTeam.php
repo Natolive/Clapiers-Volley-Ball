@@ -24,7 +24,7 @@ class HttpTeam extends Team implements HttpInterface
         try {
             $team = $this->getTeam($id);
 
-            return success_http($this->response, "team get", $team);
+            return success_http($this->response, "team get", $team->toArray());
         } catch (Exception $exception) {
             return error_http($this->response, $exception);
         }
@@ -32,11 +32,22 @@ class HttpTeam extends Team implements HttpInterface
 
     public function add(): ResponseInterface {
         try {
-            $team = [];
+            $rules = [
+                "name" => "required|min_length[1]|max_length[100]",
+                "division" => "required|min_length[1]|max_length[100]",
+                "description" => "permit_empty|min_length[1]|max_length[200]",
+                "image" => "permit_empty|uploaded[image]|is_image[image]|max_size[image,2000]"
+            ];
+            security_rules($this->request, $rules);
 
-            return $this->response->setJSON(["success" => "team add", "data" => $team]);
-        } catch (Exception $e) {
-            return $this->response->setStatusCode(400)->setJSON(["error" => $e->getMessage()]);
+            $post = $this->request->getPost(["name", "division", "description"]);
+            $image = $this->request->getFile("image");
+
+            $team = $this->addTeam($post["name"], $post["division"], $post["description"], $image);
+
+            return success_http($this->response, "team get", $team->toArray());
+        } catch (Exception $exception) {
+            return error_http($this->response, $exception);
         }
     }
 
