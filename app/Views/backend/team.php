@@ -5,7 +5,7 @@
 
 <script src="<?= base_url("src/js/team/delete_team.js") ?>"></script>
 <script src="<?= base_url("src/js/team/add_team.js") ?>"></script>
-<script src="<?= base_url("src/js/team/build_card_team.js") ?>"></script>
+<script src="<?= base_url("src/js/team/build_cards_teams.js") ?>"></script>
 <script src="<?= base_url("src/js/team/build_floating_action_button.js") ?>"></script>
 <script src="<?= base_url("src/js/team/index.js") ?>"></script>
 

@@ -1,4 +1,8 @@
-const build_card_team = async () => {
+const build_cards_teams = async () => {
+
+    if ($("#teams").children().length > 0) {
+        $("#teams").empty()
+    }
 
     const teams = await request()
     if (teams) {
@@ -18,6 +22,10 @@ const build_card_team = async () => {
             $cardTeam.find(".card-content p").text(team.description ?? "Aucune description")
             $("#teams").append($cardTeam)
         });
+
+        if (teams.length === 0) {
+            $("#teams").append($("<p>").css("text-align", "center").text("Aucun équipe, ajoutez la première !"))
+        }
     }
     
 }

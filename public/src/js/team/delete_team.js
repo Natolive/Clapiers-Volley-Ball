@@ -22,13 +22,20 @@ const delete_team = async () => {
         const $modal = $(Swal.getHtmlContainer())
         const value = $modal.find("select").val()
 
+        if (value === null) {
+            return false
+        }
         if (!validator.isInt(value, { min: 1 })) {
             return false
         }
 
         const ajax = new HelperAjax(`${GlobalVariables.baseUrl}backend/http/team/delete/${value}`)
         ajax.setMethod("DELETE")
-        return await ajax.request() ? true : false
+        const result = await ajax.request() ? true : false
+        if (result) {
+            build_cards_teams()
+        }
+        return result
     }
 
     Swal.fire({

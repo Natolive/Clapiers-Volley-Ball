@@ -104,7 +104,12 @@ const add_team = () => {
         const ajax = new HelperAjax(`${GlobalVariables.baseUrl}backend/http/team/add`)
         ajax.setMethod("POST")
         ajax.setFormData(formData)
-        return await ajax.request() ? true : false
+        const result = await ajax.request() ? true : false
+
+        if (result) {
+            build_cards_teams()
+        }
+        return result
     }
     
     // MODAL
