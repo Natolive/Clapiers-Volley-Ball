@@ -11,7 +11,8 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->group('/', ['namespace' => '\App\Controllers\Public'], static function (RouteCollection $routes) {
     $routes->get('', 'Home');
-    $routes->get('teams', 'Teams');
+    $routes->get('teams', 'ControllerPublicTeams');
+    $routes->get('serve/(:any)', 'ControllerPublicServe::get/$1');
     $routes->get('events', 'Events');
     $routes->get('rankings', 'Rankings');
 });

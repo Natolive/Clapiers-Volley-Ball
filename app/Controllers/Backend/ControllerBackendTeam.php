@@ -3,7 +3,7 @@
 namespace App\Controllers\Backend;
 
 use App\Controllers\BaseController;
-use App\Entities\Teams;
+use App\Entities\EntityTeam;
 use App\Models\TeamsModel;
 use CodeIgniter\HTTP\Files\UploadedFile;
 use \Exception;
@@ -33,9 +33,9 @@ class ControllerBackendTeam extends BaseController
      * Get team
      * @param int $idTeam
      * @throws Exception
-     * @return Teams
+     * @return EntityTeam
      */
-    protected function getTeam(int $idTeam): Teams {
+    protected function getTeam(int $idTeam): EntityTeam {
         $team = (new TeamsModel())->find($idTeam);
         if (!$team) {
             throw new Exception("Error get team", 404);
@@ -43,8 +43,8 @@ class ControllerBackendTeam extends BaseController
         return $team;
     }
 
-    protected function addTeam(string $name, string $division, ?string $description, ?UploadedFile $image): Teams {
-        $teams = new Teams();
+    protected function addTeam(string $name, string $division, ?string $description, ?UploadedFile $image): EntityTeam {
+        $teams = new EntityTeam();
         $teams->name = $name;
         $teams->division = $division;
         $teams->description = $description;

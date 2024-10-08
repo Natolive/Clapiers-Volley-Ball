@@ -9,7 +9,7 @@ class TeamsModel extends Model
     protected $table            = 'teams';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType       = \App\Entities\Teams::class;
+    protected $returnType       = \App\Entities\EntityTeam::class;
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = ['name', 'description', 'division', 'image_uuid', 'image_extension'];
