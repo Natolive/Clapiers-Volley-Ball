@@ -77,7 +77,7 @@ class Filters extends BaseFilters
                 '/rankings',
                 '/events', 
                 '/teams', 
-                '/serve', 
+                '/serve/*', 
                 'backend/login*', 
                 'backend/register', 
                 'backend/auth/a/*', 
