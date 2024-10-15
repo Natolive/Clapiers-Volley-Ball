@@ -9,5 +9,5 @@
             <img class="responsive-img" src="<?= base_url("serve/$team->image_uuid.$team->image_extension") ?>">
         </div>
 
-        <?php endforeach; ?>
+    <?php endforeach; ?>
 </div>
