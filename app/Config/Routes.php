@@ -28,6 +28,7 @@ $routes->group('/backend', ['namespace' => '\App\Controllers\Backend'], static f
     $routes->get('dashboard', 'ControllerBackendDashboard');
     $routes->get('activity', 'ControllerBackendActivity');
     $routes->get('team', 'ControllerBackendTeam');
+    $routes->get('calendar', 'ControllerBackendCalendar');
 
     $routes->group('http', ['namespace' => '\App\Controllers\Backend\Http'], static function ($routes) {
         $routes->get('serve/get/(:any)', 'HttpServe::get/$1');
