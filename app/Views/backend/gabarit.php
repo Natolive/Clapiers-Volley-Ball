@@ -40,6 +40,10 @@
 </html>
 
 <style>
+  .cropper-modal {
+    opacity: 0.5 !important;
+  }
+
   header,
   main,
   footer {
