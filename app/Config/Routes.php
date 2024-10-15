@@ -14,7 +14,7 @@ $routes->group('/', ['namespace' => '\App\Controllers\Public'], static function 
     $routes->get('teams', 'ControllerPublicTeams');
     $routes->get('serve/(:any)', 'ControllerPublicServe::get/$1');
     $routes->get('events', 'Events');
-    $routes->get('rankings', 'Rankings');
+    $routes->get('rankings', 'ControllerPublicRankings');
 });
 
 /**

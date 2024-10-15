@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clapiers Volley Ball</title>
 
+    <!-- JQuery -->
+    <script src=<?= base_url("libs/jquery/jquery.min.js") ?>></script>
     <!-- Materialize -->
     <link rel="stylesheet" href="<?= base_url("libs/materialize/materialize.min.css") ?>">
     <script src="<?= base_url("libs/materialize/materialize.min.js") ?>"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
 </head>
 
 <body>
@@ -35,3 +36,9 @@
 </body>
 
 </html>
+
+<script>
+  const GlobalVariables = {
+    baseUrl: <?= json_encode(base_url()) ?>
+  }
+</script>

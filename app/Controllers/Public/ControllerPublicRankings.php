@@ -4,7 +4,7 @@ namespace App\Controllers\Public;
 
 use App\Controllers\BaseController;
 
-class Rankings extends BaseController
+class ControllerPublicRankings extends BaseController
 {
     public function index(): string
     {
