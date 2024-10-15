@@ -73,6 +73,7 @@ const add_team = () => {
             target: Uppy.Dashboard,
             quality: 0.8,
             cropperOptions: {
+                aspectRatio: 16/9,
                 viewMode: 0,
                 background: true,
                 autoCropArea: 1,
@@ -84,9 +85,9 @@ const add_team = () => {
                 flip: true,
                 zoomIn: true,
                 zoomOut: true,
-                cropSquare: true,
-                cropWidescreen: true,
-                cropWidescreenVertical: true,
+                cropSquare: false,
+                cropWidescreen: false,
+                cropWidescreenVertical: false,
             }
         })
         $modal.find("#input-image").data("uppy", uppy)

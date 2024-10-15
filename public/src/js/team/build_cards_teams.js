@@ -16,7 +16,7 @@ const build_cards_teams = async () => {
             $cardTeam.find(".card-image img").attr("src", 
                 team.image_uuid ? 
                 `${GlobalVariables.baseUrl}backend/http/serve/get/${team.image_uuid}.${team.image_extension}`
-                : `${GlobalVariables.baseUrl}src/images/f1c2343b-5928-422b-bea8-50c5582be632.avif`
+                : `${GlobalVariables.baseUrl}src/images/f1c2343b-5928-422b-bea8-50c5582be632.webp`
             )
             
             $cardTeam.find(".card-content p").text(team.description ?? "Aucune description")
