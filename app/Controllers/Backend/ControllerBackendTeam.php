@@ -44,25 +44,25 @@ class ControllerBackendTeam extends BaseController
     }
 
     protected function addTeam(string $name, string $division, ?string $description, ?UploadedFile $image): EntityTeam {
-        $teams = new EntityTeam();
-        $teams->name = $name;
-        $teams->division = $division;
-        $teams->description = $description;
+        $team = new EntityTeam();
+        $team->name = $name;
+        $team->division = $division;
+        $team->description = $description;
         
         if ($image) {
             if ($image->isValid() && !$image->hasMoved()) {
                 $guidv4 = guidv4();
                 $extension = $image->getExtension();
                 $image->move(WRITEPATH . 'uploads', $guidv4 . "." . $extension);
-                $teams->image_uuid = $guidv4;
-                $teams->image_extension = $extension;
+                $team->image_uuid = $guidv4;
+                $team->image_extension = $extension;
             }
         }
 
-        if (!(new TeamsModel)->save($teams)) {
+        if (!(new TeamsModel)->save($team)) {
             throw new Exception("Error inserting team", 400);
         }
-        return $teams;
+        return $team;
     }
 
     protected function deleteTeam(int $idTeam): int 

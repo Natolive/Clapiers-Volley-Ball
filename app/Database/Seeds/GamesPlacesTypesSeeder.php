@@ -10,10 +10,12 @@ class GamesPlacesTypesSeeder extends Seeder
     {
         $data = [
             [
+                'name' => 'home',
                 'place' => 'Domicile',
                 'description' => 'Matchs joués à domicile'
             ],
             [
+                'name' => 'outside',
                 'place' => 'Extérieur',
                 'description' => 'Matchs joués à l’extérieur'
             ]

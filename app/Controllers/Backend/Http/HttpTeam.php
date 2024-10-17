@@ -45,7 +45,7 @@ class HttpTeam extends ControllerBackendTeam implements HttpInterface
 
             $team = $this->addTeam($post["name"], $post["division"], $post["description"], $image);
 
-            return success_http($this->response, "team get", $team->toArray());
+            return success_http($this->response, "team add", $team->toArray());
         } catch (Exception $exception) {
             return error_http($this->response, $exception);
         }

@@ -14,13 +14,14 @@ class EntityGame extends Entity
         'opposite_team' => 'string',
         'id_team' => 'entity_team',
         'id_game_place_type' => 'entity_game_place_type' ,
-        'id_game_championship_type' => 'int' ,
+        'id_game_championship_type' => 'entity_game_championship_type' ,
         'created_at' => '?datetime',
         'updated_at' => '?datetime',
     ];
 
     protected $castHandlers = [
         'entity_team' => Cast\CastEntityTeam::class,
-        'entity_game_place_type' => Cast\CastEntityGamePlaceType::class
+        'entity_game_place_type' => Cast\CastEntityGamePlaceType::class,
+        'entity_game_championship_type' => Cast\CastEntityChampionshipType::class
     ];
 }

@@ -33,9 +33,13 @@ $routes->group('/backend', ['namespace' => '\App\Controllers\Backend'], static f
     $routes->group('http', ['namespace' => '\App\Controllers\Backend\Http'], static function ($routes) {
         $routes->get('serve/get/(:any)', 'HttpServe::get/$1');
         
+        //teams
         $routes->get('team/getAll', 'HttpTeam::getAll');
         $routes->post('team/add', 'HttpTeam::add');
         $routes->delete('team/delete/(:num)', 'HttpTeam::delete/$1');
+        //games
+        $routes->get('game/getAll', 'HttpGame::getAll');
+        $routes->post('game/add', 'HttpGame::add');
 
     });
 });
