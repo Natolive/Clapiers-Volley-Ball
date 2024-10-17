@@ -38,8 +38,9 @@ $routes->group('/backend', ['namespace' => '\App\Controllers\Backend'], static f
         $routes->post('team/add', 'HttpTeam::add');
         $routes->delete('team/delete/(:num)', 'HttpTeam::delete/$1');
         //games
+        $routes->get('game/get/(:num)', 'HttpGame::get/$1');
         $routes->get('game/getAll', 'HttpGame::getAll');
         $routes->post('game/add', 'HttpGame::add');
-
+        $routes->post('game/update/(:num)', 'HttpGame::update/$1');
     });
 });

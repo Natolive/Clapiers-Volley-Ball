@@ -34,9 +34,35 @@ class ControllerBackendCalendar extends BaseController
         $game->id_game_championship_type = $idGameChampionshipType;
         $game->date = DateTime::createFromFormat("d/m/Y", $date);
 
-        if (!(new GamesModel())->save($game)) {
+        $idGame = (new GamesModel())->insert($game);
+        if (!$idGame) {
             throw new Exception("Error inserting game", 400);
         }
+        $game->id = $idGame;
+        return $game;
+    }
+
+    protected function getGame(int $idGame): EntityGame {
+        $game = (new GamesModel())->find($idGame);
+        if (!$game) {
+            throw new Exception("Error get game", 404);
+        }
+        return $game;
+    }
+
+    protected function updateGame(int $idGame, int $idTeam, string $oppositeTeam, int $idGamePlaceType, int $idGameChampionshipType, string $date): EntityGame
+    {
+        $game = new EntityGame();
+        $game->id_team = $idTeam;
+        $game->opposite_team = $oppositeTeam;
+        $game->id_game_place_type = $idGamePlaceType;
+        $game->id_game_championship_type = $idGameChampionshipType;
+        $game->date = DateTime::createFromFormat("d/m/Y", $date);
+
+        if(!(new GamesModel())->update($idGame, $game)) {
+            throw new Exception("Error updating game", 400);
+        };
+        $game->id = $idGame;
         return $game;
     }
 }

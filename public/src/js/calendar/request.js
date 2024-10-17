@@ -12,8 +12,22 @@ const requestAddGame = async (formData) => {
     return data ? data.data : false
 }
 
+const requestGetGame = async (id) => {
+    const ajax = new HelperAjax(`${GlobalVariables.baseUrl}backend/http/game/get/${id}`)
+    const data = await ajax.request()
+    return data ? data.data : false
+}
+
 const requestGetAllTeams = async () => {
     const ajax = new HelperAjax(`${GlobalVariables.baseUrl}backend/http/team/getAll`)
+    const data = await ajax.request()
+    return data ? data.data : false
+}
+
+const requestUpdateGame = async (formData, id) => {
+    const ajax = new HelperAjax(`${GlobalVariables.baseUrl}backend/http/game/update/${id}`)
+    ajax.setMethod("POST")
+    ajax.setFormData(formData)
     const data = await ajax.request()
     return data ? data.data : false
 }

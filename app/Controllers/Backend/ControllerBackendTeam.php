@@ -59,24 +59,27 @@ class ControllerBackendTeam extends BaseController
             }
         }
 
-        if (!(new TeamsModel)->save($team)) {
+        $idTeam = (new TeamsModel)->insert($team);
+        if (!$idTeam) {
             throw new Exception("Error inserting team", 400);
         }
+        $team->id = $idTeam;
         return $team;
     }
 
     protected function deleteTeam(int $idTeam): int 
     {
         $team = $this->getTeam($idTeam);
+        
+        if (!(new TeamsModel())->delete($idTeam)) {
+            throw new Exception("Error deleting team", 400);
+        }
+            
         if ($team->image_uuid) {
             $path = WRITEPATH . "uploads/" . $team->image_uuid . "." . $team->image_extension;
             if (file_exists($path)) {
                 unlink($path);
             }
-        }
-
-        if (!(new TeamsModel())->delete($idTeam)) {
-            throw new Exception("Error deleting team", 400);
         }
         return $idTeam;
     }

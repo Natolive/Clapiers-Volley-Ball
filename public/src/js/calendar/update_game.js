@@ -1,12 +1,27 @@
-const add_game = (info) => {
-    const date = info.date
-    const formData = new FormData()
-    
-    const didOpenStep1 = async () => {
+const update_game = async (info) => {
+    const idGame = info.event.id
+
+    const game = await requestGetGame(idGame)
+    const date = new Date(game.date.date)
+
+    const didOpen = async () => {
         const $modal = $(Swal.getHtmlContainer())
         const teams = await requestGetAllTeams()
 
         const $teams = $modal.find("#input-teams")
+        const $oppositeTeam = $modal.find("#input-opposite-team")
+        const $gamesPlacesTypes = $modal.find("#input-games-places-types")
+        const $gamesChampionshipsTypes = $modal.find("#input-games-championships-types")
+        const $date = $modal.find("#input-date")
+
+        M.CharacterCounter.init($modal.find("input#input-opposite-team")[0])
+
+
+        $teams.val(game.id_team.id)
+        $oppositeTeam.val(game.opposite_team).click()
+        $gamesPlacesTypes.val(game.id_game_place_type.id)
+        $gamesChampionshipsTypes.val(game.id_game_championship_type.id)
+        
         teams.forEach(team => {
             $teams.append($("<option>").val(team.id).text(team.name).attr("data-icon", 
                 team.image_uuid ? 
@@ -14,15 +29,24 @@ const add_game = (info) => {
                 : `${GlobalVariables.baseUrl}src/images/f1c2343b-5928-422b-bea8-50c5582be632.webp`))
         });
         M.FormSelect.init($teams[0], []);
-        M.CharacterCounter.init($modal.find("input#input-opposite-team")[0])
+        M.FormSelect.init($gamesPlacesTypes[0], []);
+        M.FormSelect.init($gamesChampionshipsTypes[0], []);
+        M.Datepicker.init($date[0], {
+            defaultDate: date,
+            setDefaultDate: true,
+            format: "dd/mm/yyyy"
+        });
     }
-    const preConfirmStep1 = () => {
+    const preConfirm = async () => {
         const valid = []
-
+        const formData = new FormData()
         const $modal = $(Swal.getHtmlContainer())
 
         const $teams = $modal.find("#input-teams")
-        const $oppositeTeam = $modal.find("input#input-opposite-team")
+        const $oppositeTeam = $modal.find("#input-opposite-team")
+        const $gamesPlacesTypes = $modal.find("#input-games-places-types")
+        const $gamesChampionshipsTypes = $modal.find("#input-games-championships-types")
+        const $date = $modal.find("#input-date")
 
         if ($teams.val() === null) {
             valid.push(false)
@@ -37,38 +61,6 @@ const add_game = (info) => {
         } else {
             $oppositeTeam.removeClass("invalid").addClass('valid')
         }
-
-        if (valid.includes(false)) {
-            return false
-        }
-        
-        formData.append("id_team", $teams.val())
-        formData.append("opposite_team", $oppositeTeam.val())
-    }
-
-    const didOpenStep2 = () => {
-        const $modal = $(Swal.getHtmlContainer())
-
-        const $gamesPlacesTypes = $modal.find("#input-games-places-types")
-        const $gamesChampionshipsTypes = $modal.find("#input-games-championships-types")
-        M.FormSelect.init($gamesPlacesTypes[0], []);
-        M.FormSelect.init($gamesChampionshipsTypes[0], []);
-
-        const $date = $modal.find("#input-date")
-        M.Datepicker.init($date[0], {
-            defaultDate: date,
-            setDefaultDate: true,
-            format: "dd/mm/yyyy"
-        });
-    }
-    const preConfirmStep2 = async () => {
-        const valid = []
-
-        const $modal = $(Swal.getHtmlContainer())
-
-        const $gamesPlacesTypes = $modal.find("#input-games-places-types")
-        const $gamesChampionshipsTypes = $modal.find("#input-games-championships-types")
-        const $date = $modal.find("input#input-date")
 
         if ($gamesPlacesTypes.val() === null) {
             valid.push(false)
@@ -98,45 +90,26 @@ const add_game = (info) => {
         formData.append("id_game_place_type", $gamesPlacesTypes.val())
         formData.append("id_game_championship_type", $gamesChampionshipsTypes.val())
         formData.append("date", $date.val())
+        formData.append("id_team", $teams.val())
+        formData.append("opposite_team", $oppositeTeam.val())
 
-        const game = await requestAddGame(formData)
+        const game = await requestUpdateGame(formData, idGame)
         if (game) {
-            calendar_add_game(game)
+            calendar_update_game(game)
         }
     }
 
-    // MODAL
-    
-    let toKeepOpen = true
-    const steps = ['1', '2']
-    const Queue = Swal.mixin({
-        title: "Ajouter un match",
-        progressSteps: steps,
+    Swal.fire({
+        title: "Modifier un match",
+        html: $("#template-update-game").clone().show().removeAttr("id")[0],
         showCloseButton: true,
         allowOutsideClick: false,
         width: "unset",
+        didOpen,
+        preConfirm,
         confirmButtonText: 'Suivant >',
         showClass: { backdrop: 'swal2-noanimation' },
         hideClass: { backdrop: 'swal2-noanimation' },
-    }); (async () => {
-        await Queue.fire({
-            currentProgressStep: 0,
-            didOpen: didOpenStep1,
-            preConfirm: preConfirmStep1,
-            html: $("#template-add-game").find("#step-1").clone().show().removeAttr("id"),
-        }).then((result) => {
-            if (result.isDismissed) {
-                toKeepOpen = false
-            }
-        })
-        if (toKeepOpen) {
-            await Queue.fire({
-                currentProgressStep: 1,
-                didOpen: didOpenStep2,
-                preConfirm: preConfirmStep2,
-                html: $("#template-add-game").find("#step-2").clone().show().removeAttr("id"),
-                confirmButtonText: 'Ajouter',
-            })
-        }
-    })()
+        confirmButtonText: 'Modifier',
+    });
 }

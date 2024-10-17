@@ -58,6 +58,13 @@ class HttpGame extends ControllerBackendCalendar implements HttpInterface
      * @inheritDoc
      */
     public function get(int $id): ResponseInterface {
+        try {
+            $game = $this->getGame($id);
+
+            return success_http($this->response, "game get", $game->toArray());
+        } catch (Exception $exception) {
+            return error_http($this->response, $exception);
+        }
     }
     
     
@@ -65,5 +72,23 @@ class HttpGame extends ControllerBackendCalendar implements HttpInterface
      * @inheritDoc
      */
     public function update(int $id): ResponseInterface {
+        try {
+            $rules = [
+                "id_team" => "required|integer",
+                "opposite_team" => "required|min_length[1]|max_length[255]",
+                "id_game_place_type" => "required|integer",
+                "id_game_championship_type" => "required|integer",
+                "date" => "required|valid_date[d/m/Y]"
+            ];
+            security_rules($this->request, $rules);
+
+            $post = $this->request->getPost(["id_team", "opposite_team", "id_game_place_type", "id_game_championship_type", "date"]);
+
+            $game = $this->updateGame($id, $post["id_team"], $post["opposite_team"], $post["id_game_place_type"], $post["id_game_championship_type"], $post["date"]);
+
+            return success_http($this->response, "game update", $game->toArray());
+        } catch (Exception $exception) {
+            return error_http($this->response, $exception);
+        }
     }
 }
