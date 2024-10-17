@@ -7,7 +7,7 @@ use CodeIgniter\Entity\Entity;
 class EntityTeam extends Entity
 {
     protected $datamap = [];
-    protected $dates   = ['created_at', 'updated_at', 'deleted_at'];
+    protected $dates   = ['created_at', 'updated_at'];
     protected $casts   = [
         'id' => 'int',
         'name' => 'string',
