@@ -33,15 +33,15 @@ $routes->group('/backend', ['namespace' => '\App\Controllers\Backend'], static f
     $routes->group('http', ['namespace' => '\App\Controllers\Backend\Http'], static function ($routes) {
         $routes->get('serve/get/(:any)', 'HttpServe::get/$1');
         
-        //teams
+        //team
         $routes->get('team/getAll', 'HttpTeam::getAll');
         $routes->post('team/add', 'HttpTeam::add');
         $routes->delete('team/delete/(:num)', 'HttpTeam::delete/$1');
-        //games
-        $routes->get('game/get/(:num)', 'HttpGame::get/$1');
-        $routes->get('game/getAll', 'HttpGame::getAll');
-        $routes->post('game/add', 'HttpGame::add');
-        $routes->post('game/update/(:num)', 'HttpGame::update/$1');
-        $routes->delete('game/delete/(:num)', 'HttpGame::delete/$1');
+        //calender
+        $routes->get('calendar/get/(:num)', 'HttpCalendar::get/$1');
+        $routes->get('calendar/getAll', 'HttpCalendar::getAll');
+        $routes->post('calendar/add', 'HttpCalendar::add');
+        $routes->post('calendar/update/(:num)', 'HttpCalendar::update/$1');
+        $routes->delete('calendar/delete/(:num)', 'HttpCalendar::delete/$1');
     });
 });

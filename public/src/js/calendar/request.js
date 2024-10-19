@@ -1,5 +1,5 @@
 const requestGetAllGames = async (start, end) => {
-    const ajax = new HelperAjax(`${GlobalVariables.baseUrl}backend/http/game/getAll`)
+    const ajax = new HelperAjax(`${GlobalVariables.baseUrl}backend/http/calendar/getAll`)
     const params = {
         start,
         end
@@ -10,7 +10,7 @@ const requestGetAllGames = async (start, end) => {
 }
 
 const requestAddGame = async (formData) => {
-    const ajax = new HelperAjax(`${GlobalVariables.baseUrl}backend/http/game/add`)
+    const ajax = new HelperAjax(`${GlobalVariables.baseUrl}backend/http/calendar/add`)
     ajax.setMethod("POST")
     ajax.setFormData(formData)
     const data = await ajax.request()
@@ -18,7 +18,7 @@ const requestAddGame = async (formData) => {
 }
 
 const requestGetGame = async (id) => {
-    const ajax = new HelperAjax(`${GlobalVariables.baseUrl}backend/http/game/get/${id}`)
+    const ajax = new HelperAjax(`${GlobalVariables.baseUrl}backend/http/calendar/get/${id}`)
     const data = await ajax.request()
     return data ? data.data : false
 }
@@ -30,7 +30,7 @@ const requestGetAllTeams = async () => {
 }
 
 const requestUpdateGame = async (formData, id) => {
-    const ajax = new HelperAjax(`${GlobalVariables.baseUrl}backend/http/game/update/${id}`)
+    const ajax = new HelperAjax(`${GlobalVariables.baseUrl}backend/http/calendar/update/${id}`)
     ajax.setMethod("POST")
     ajax.setFormData(formData)
     const data = await ajax.request()
@@ -38,7 +38,7 @@ const requestUpdateGame = async (formData, id) => {
 }
 
 const requestDeleteGame = async (id) => {
-    const ajax = new HelperAjax(`${GlobalVariables.baseUrl}backend/http/game/delete/${id}`)
+    const ajax = new HelperAjax(`${GlobalVariables.baseUrl}backend/http/calendar/delete/${id}`)
     ajax.setMethod("DELETE")
     const data = await ajax.request()
     return data ? data.data : false

@@ -8,7 +8,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use Exception;
 use DateTime;
 
-class HttpGame extends ControllerBackendCalendar implements HttpInterface
+class HttpCalendar extends ControllerBackendCalendar implements HttpInterface
 {
 
     /**
@@ -87,7 +87,6 @@ class HttpGame extends ControllerBackendCalendar implements HttpInterface
             return error_http($this->response, $exception);
         }
     }
-    
     
     /**
      * @inheritDoc
