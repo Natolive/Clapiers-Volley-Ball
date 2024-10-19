@@ -11,6 +11,9 @@
   <script src="<?= base_url("libs/materialize/materialize.min.js") ?>"></script>
   <!-- JQuery -->
   <script src=<?= base_url("libs/jquery/jquery.min.js") ?>></script>
+  <!-- Toast -->
+  <link rel="stylesheet" href="<?= base_url("libs/toast/toast.min.css") ?>">
+  <script src=<?= base_url("libs/toast/toast.min.js") ?>></script>
   <!-- Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Datatables -->
