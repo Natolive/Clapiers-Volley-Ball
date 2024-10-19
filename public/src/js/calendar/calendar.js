@@ -11,19 +11,25 @@ const calendar = async () => {
         },
         dateClick: add_game,
         eventClick: update_game,
+        datesSet: async (info) => {
+            instanceCalendar.removeAllEvents()
+
+            const start = `${String(info.start.getDate()).padStart(2, '0')}/${String(info.start.getMonth() + 1).padStart(2, '0')}/${info.start.getFullYear()}`
+            const end = `${String(info.end.getDate()).padStart(2, '0')}/${String(info.end.getMonth() + 1).padStart(2, '0')}/${info.end.getFullYear()}`
+
+            const games = await requestGetAllGames(start, end)
+            if (games.length > 0) {
+                games.forEach(game => {
+                    calendar_add_game(game)
+                });
+            }
+        }
     });
     instanceCalendar.render();
-
-    const games = await requestGetAllGames()
-    if (games.length > 0) {
-        games.forEach(game => {
-            calendar_add_game(game)
-        });
-    }
 }
 
 const calendar_add_game = (game) => {
-    
+
     let title
     let color
     if (game.id_game_place_type.name === "home") {

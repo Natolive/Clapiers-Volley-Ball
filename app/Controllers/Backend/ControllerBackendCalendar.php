@@ -22,8 +22,12 @@ class ControllerBackendCalendar extends BaseController
         ]), "Calendrier");
     }
 
-    protected function getAllGames(): array {
-        return (new GamesModel)->findAll();
+    protected function getAllGames(?string $start, ?string $end): array {
+        $gamesModel = new GamesModel();
+        if ($start && $end) {
+            $gamesModel->where('date >=', $start)->where('date <=', $end);
+        }
+        return $gamesModel->findAll();
     }
 
     protected function addGame(int $idTeam, string $oppositeTeam, int $idGamePlaceType, int $idGameChampionshipType, string $date): EntityGame {

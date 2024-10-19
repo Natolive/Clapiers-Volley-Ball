@@ -3,10 +3,10 @@
 namespace App\Controllers\Backend\Http;
 
 use App\Controllers\Backend\ControllerBackendCalendar;
-use App\Controllers\Backend\ControllerBackendTeam;
 use App\Controllers\Backend\Http\HttpInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Exception;
+use DateTime;
 
 class HttpGame extends ControllerBackendCalendar implements HttpInterface
 {
@@ -16,7 +16,20 @@ class HttpGame extends ControllerBackendCalendar implements HttpInterface
      */
     public function getAll(): ResponseInterface {
         try {
-            $games = $this->getAllGames();
+            $rules = [
+                "start" => "permit_empty|valid_date[d/m/Y]",
+                "end" => "permit_empty|valid_date[d/m/Y]",
+            ];
+            security_rules($this->request, $rules);
+            
+            $start = $this->request->getGet("start");
+            $end = $this->request->getGet("end");
+            if ($start !== null && $end !== null) {
+                $start = DateTime::createFromFormat('d/m/Y', $start)->format('Y-m-d');
+                $end = DateTime::createFromFormat('d/m/Y', $end)->format('Y-m-d');
+            }
+
+            $games = $this->getAllGames($start, $end);
             
             return success_http($this->response, "games get all", $games); 
         } catch (Exception $exception) {

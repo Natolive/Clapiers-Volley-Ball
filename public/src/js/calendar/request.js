@@ -1,5 +1,10 @@
-const requestGetAllGames = async () => {
+const requestGetAllGames = async (start, end) => {
     const ajax = new HelperAjax(`${GlobalVariables.baseUrl}backend/http/game/getAll`)
+    const params = {
+        start,
+        end
+    }
+    ajax.setUrlParams(params)
     const data = await ajax.request()
     return data ? data.data : false
 }

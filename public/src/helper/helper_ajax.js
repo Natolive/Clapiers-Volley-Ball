@@ -7,6 +7,7 @@ class HelperAjax {
     constructor(url) {
         this.method = "GET"
         this.url = url
+        this.params = null
     }
 
     setMethod(method) {
@@ -15,6 +16,15 @@ class HelperAjax {
 
     setFormData(formData) {
         this.formData = formData
+    }
+
+    /**
+     * Set params to add in url (get)
+     * 
+     * @param {Array} params 
+     */
+    setUrlParams(params) {
+        this.params = params
     }
 
     async request() {
@@ -26,6 +36,10 @@ class HelperAjax {
             }
             if (this.method === "POST") {
                 settings.body = this.formData
+            }
+
+            if (this.params) {
+                this.url += `?${new URLSearchParams(this.params).toString()}`
             }
 
             const response = await fetch(this.url, settings)
