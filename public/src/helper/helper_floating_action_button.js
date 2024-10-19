@@ -23,6 +23,10 @@ class HelperFloatingActionButton {
         this.$button.append($a.append($i))
     }
 
+    add_callback_to_main_button = (callback) => {
+        this.$button.on("click", callback)
+    }
+
     /**
      * Add floating button
      * 

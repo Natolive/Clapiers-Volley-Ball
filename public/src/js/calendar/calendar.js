@@ -19,10 +19,14 @@ const calendar = async () => {
             const end = `${String(info.end.getDate()).padStart(2, '0')}/${String(info.end.getMonth() + 1).padStart(2, '0')}/${info.end.getFullYear()}`
 
             const games = await requestGetAllGames(start, end)
-            if (games.length > 0) {
+            if (games) {
                 games.forEach(game => {
                     calendar_add_game(game)
                 });
+            } else {
+                const toast = new HelperToast("Error")
+                toast.addText("Erreur dans la récupération des matchs...")
+                toast.display()
             }
         },
         eventContent: function(arg) {

@@ -13,6 +13,10 @@ const build_cards_teams = async () => {
             $cardTeam.find(".card-title").append($("<br>"))
             $cardTeam.find(".card-title").append($subTitle)
 
+            $cardTeam.find("#delete").on("click", () => {
+                delete_team(team.id)
+            })
+
             $cardTeam.find(".card-image img").attr("src", 
                 team.image_uuid ? 
                 `${GlobalVariables.baseUrl}backend/http/serve/get/${team.image_uuid}.${team.image_extension}`
@@ -26,6 +30,10 @@ const build_cards_teams = async () => {
         if (teams.length === 0) {
             $("#teams").append($("<p>").css("text-align", "center").text("Aucun équipe, ajoutez la première !"))
         }
+    } else {
+        const toast = new HelperToast("Error")
+        toast.addText("Erreur dans la récupération des équipes...")
+        toast.display()
     }
     
 }

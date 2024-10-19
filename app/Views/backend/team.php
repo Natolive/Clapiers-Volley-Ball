@@ -17,10 +17,17 @@
         <div style="height: 200px; display: flex; align-items: center;" class="card-image">
             <img style="max-height: 100%;">
             <span class="card-title"></span>
-            <a class="btn-floating halfway-fab waves-effect waves-light blue"><i class="material-icons">edit</i></a>
         </div>
         <div class="card-content">
             <p></p>
+        </div>
+        <div class="card-action ">
+            <a id="update" class="btn-floating waves-effect waves-light blue" href="#">
+                <i class="material-icons">edit</i>
+            </a>
+            <a id="delete" class="btn-floating waves-effect waves-light red" href="#">
+                <i class="material-icons">delete</i>
+            </a>
         </div>
     </div>
 </div>
@@ -51,16 +58,5 @@
     </div>
     <div id="step-2" style="display:none;">
         <div id="input-image"></div>
-    </div>
-</div>
-
-<div id="template-delete-team" style="display:none; height: 100%; align-items: center;">
-    <div class="row" style="width:100%;">
-        <div class="input-field col s12">
-            <select id="input-teams">
-                <option disabled selected>Choisissez une équipe</option>
-            </select>
-            <label>Équipes</label>
-        </div>
     </div>
 </div>
