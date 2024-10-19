@@ -33,6 +33,9 @@ class HelperAjax {
 
             const settings = {
                 method: this.method,
+                headers: {
+                    "X-Requested-With": "XMLHttpRequest"
+                }
             }
             if (this.method === "POST") {
                 settings.body = this.formData
@@ -48,11 +51,13 @@ class HelperAjax {
 
             if (!response.ok) {
                 const error = await response.json()
-                throw new Error(error.message)
+                const message = error.message
+                return false
             }
         
             return await response.json()
         } catch (error) {
+            location.reload()
             console.error(error)
             return false
         }

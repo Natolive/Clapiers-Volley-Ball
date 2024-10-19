@@ -73,17 +73,16 @@ class Filters extends BaseFilters
             // 'csrf',
             // 'invalidchars',
             'session' => ['except' => [
-                '/', 
+                '/',
                 '/rankings',
-                '/events', 
-                '/teams', 
-                '/serve/*', 
-                'backend/login*', 
-                'backend/register', 
-                'backend/auth/a/*', 
+                '/events',
+                '/teams',
+                '/serve/*',
+                'backend/login*',
+                'backend/register',
+                'backend/auth/a/*',
                 'backend/logout'
             ]]
-            // 'session' => ['except' => ['login*', 'register', 'auth/a/*', 'logout']],
         ],
         'after' => [
             // 'honeypot',
