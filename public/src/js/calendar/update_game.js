@@ -16,7 +16,6 @@ const update_game = async (info) => {
 
         M.CharacterCounter.init($modal.find("input#input-opposite-team")[0])
 
-
         $teams.val(game.id_team.id)
         $oppositeTeam.val(game.opposite_team).click()
         $gamesPlacesTypes.val(game.id_game_place_type.id)
@@ -95,7 +94,14 @@ const update_game = async (info) => {
 
         const game = await requestUpdateGame(formData, idGame)
         if (game) {
+            const toast = new HelperToast("Success")
+            toast.addText("Le match à bien été modifié !")
+            toast.display()
             calendar_update_game(game)
+        } else {
+            const toast = new HelperToast("Error")
+            toast.addText("Erreur dans la modification du match...")
+            toast.display()
         }
     }
 

@@ -33,7 +33,14 @@ const delete_team = async () => {
         ajax.setMethod("DELETE")
         const result = await ajax.request() ? true : false
         if (result) {
+            const toast = new HelperToast("Success")
+            toast.addText("L'équipe à bien été supprimé !")
+            toast.display()
             build_cards_teams()
+        } else {
+            const toast = new HelperToast("Error")
+            toast.addText("Erreur dans la suppression de l'équipe...")
+            toast.display()
         }
         return result
     }

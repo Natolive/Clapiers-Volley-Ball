@@ -3,6 +3,7 @@
 <!-- helpers -->
 <script src="<?= base_url("src/helper/helper_ajax.js") ?>"></script>
 <script src="<?= base_url("src/helper/helper_loader.js") ?>"></script>
+<script src="<?= base_url("src/helper/helper_toast.js") ?>"></script>
 <!-- customs -->
 <script src="<?= base_url("src/js/calendar/index.js") ?>"></script>
 <script src="<?= base_url("src/js/calendar/add_game.js") ?>"></script>

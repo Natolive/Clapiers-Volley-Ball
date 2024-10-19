@@ -7,7 +7,14 @@ const delete_game = (idGame) => {
         preConfirm: async () => {
             idGame = await requestDeleteGame(idGame)
             if (idGame) {
+                const toast = new HelperToast("Success")
+                toast.addText("Le match à bien été supprimé !")
+                toast.display()
                 calendar_delete_game(idGame)
+            } else {
+                const toast = new HelperToast("Error")
+                toast.addText("Erreur dans la suppression du match...")
+                toast.display()
             }
         },
         width: "unset",

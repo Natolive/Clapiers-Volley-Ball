@@ -2,6 +2,7 @@
 <script src="<?= base_url("src/helper/helper_floating_action_button.js") ?>"></script>
 <script src="<?= base_url("src/helper/helper_ajax.js") ?>"></script>
 <script src="<?= base_url("src/helper/helper_loader.js") ?>"></script>
+<script src="<?= base_url("src/helper/helper_toast.js") ?>"></script>
 
 <script src="<?= base_url("src/js/team/delete_team.js") ?>"></script>
 <script src="<?= base_url("src/js/team/add_team.js") ?>"></script>

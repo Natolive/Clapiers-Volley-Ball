@@ -108,7 +108,14 @@ const add_team = () => {
         const result = await ajax.request() ? true : false
 
         if (result) {
+            const toast = new HelperToast("Success")
+            toast.addText("L'équipe à bien été ajouté !")
+            toast.display()
             build_cards_teams()
+        } else {
+            const toast = new HelperToast("Error")
+            toast.addText("Erreur dans l'ajout de l'équipe...")
+            toast.display()
         }
         return result
     }
