@@ -69,4 +69,12 @@ class ControllerBackendCalendar extends BaseController
         $game->id = $idGame;
         return $game;
     }
+
+    protected function deleteGame(int $idGame): int
+    {   
+        if (!(new GamesModel())->delete($idGame)) {
+            throw new Exception("Error deleting team", 400);
+        }
+        return $idGame;
+    }
 }

@@ -65,6 +65,14 @@ class HttpGame extends ControllerBackendCalendar implements HttpInterface
      * @inheritDoc
      */
     public function delete(int $id): ResponseInterface {
+        try {
+            $idGame = $this->deleteGame($id);
+
+
+            return success_http($this->response, "game delete", $idGame);
+        } catch (Exception $exception) {
+            return error_http($this->response, $exception);
+        }
     }
     
     /**

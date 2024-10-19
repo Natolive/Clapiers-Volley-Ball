@@ -9,6 +9,7 @@
 <script src="<?= base_url("src/js/calendar/calendar.js") ?>"></script>
 <script src="<?= base_url("src/js/calendar/request.js") ?>"></script>
 <script src="<?= base_url("src/js/calendar/update_game.js") ?>"></script>
+<script src="<?= base_url("src/js/calendar/delete_game.js") ?>"></script>
 
 <div id="calendar"></div>
 

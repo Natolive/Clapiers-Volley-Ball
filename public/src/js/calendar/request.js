@@ -36,3 +36,10 @@ const requestUpdateGame = async (formData, id) => {
     const data = await ajax.request()
     return data ? data.data : false
 }
+
+const requestDeleteGame = async (id) => {
+    const ajax = new HelperAjax(`${GlobalVariables.baseUrl}backend/http/game/delete/${id}`)
+    ajax.setMethod("DELETE")
+    const data = await ajax.request()
+    return data ? data.data : false
+}

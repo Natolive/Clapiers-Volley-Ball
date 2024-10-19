@@ -107,7 +107,6 @@ const update_game = async (info) => {
         width: "unset",
         didOpen,
         preConfirm,
-        confirmButtonText: 'Suivant >',
         showClass: { backdrop: 'swal2-noanimation' },
         hideClass: { backdrop: 'swal2-noanimation' },
         confirmButtonText: 'Modifier',

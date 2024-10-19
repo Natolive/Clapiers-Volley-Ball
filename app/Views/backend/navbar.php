@@ -1,4 +1,4 @@
-<nav>
+<nav id="navbar">
     <div class="nav-wrapper">
       <a style="margin-left:20px;" class="brand-logo"><?= $title ?></a>
     </div>

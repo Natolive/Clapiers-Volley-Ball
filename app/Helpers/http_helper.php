@@ -2,7 +2,7 @@
 
 use CodeIgniter\HTTP\ResponseInterface;
 
-function success_http(ResponseInterface $response, string $message, array $data, array $extras = []): ResponseInterface{
+function success_http(ResponseInterface $response, string $message, array|int $data, array $extras = []): ResponseInterface{
     return $response->setStatusCode(200)->setJSON(array_merge(["success" => $message, "data" => $data], $extras));
 }
 
