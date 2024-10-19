@@ -17,9 +17,22 @@
   </div>
 </nav>
 
-<ul class="sidenav" id="mobile-navbar">
-  <li><a href="<?= base_url("rankings") ?>">Classements</a></li>
-  <li><a href="<?= base_url("teams") ?>">Équipes</a></li>
-  <li><a href="<?= base_url("events") ?>">Événements</a></li>
-  <li><a href="<?= base_url("backend/dashboard") ?>">Dashboard</a></li>
+<ul style="display: flex; flex-direction: column;" class="sidenav" id="mobile-navbar">
+  <nav>
+    <div class="nav-wrapper grey darken-4">
+      <a class="brand-logo">Clapiers VB</a>
+    </div>
+  </nav>
+  <li><a href="<?= base_url("rankings") ?>"><i class="material-icons">star</i> Classements</a></li>
+  <li><a href="<?= base_url("teams") ?>"><i class="material-icons">groups</i> Équipes</a></li>
+  <li><a href="<?= base_url("events") ?>"><i class="material-icons">emoji_events</i> Événements</a></li>
+  <li style="margin-top:auto;"><a href="<?= base_url("backend/dashboard") ?>"><i class="material-icons">admin_panel_settings</i> Dashboard</a>
+  </li>
 </ul>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, []);
+  });
+</script>
